@@ -17,15 +17,23 @@ class Pokimon:
         self.turno = 1
         self.puntos = puntos
 
-    def nivel(self, nivel, enemigo):
+    def nivel(self, enemigo):
 
-        self.nivel = rd.randint(1,20)
+        while self.atacar(enemigo) or enemigo.vida >= 0:
+            self.puntos += rd.randint(5,25)
 
-        maximo = 100
-        self.puntos = 0
-        while enemigo.vida <= 0 and self.puntos <= maximo:
-            self.puntos = self.puntos + rd.randint(1,15)
-            maximo = maximo + rd.randint(5,25)
+        nivel_siguiente = self.nivel + 1
+        puntos_requeridos = nivel_siguiente * (25,65)
+
+        if self.puntos >= puntos_requeridos:
+            self.nivel = nivel_siguiente
+            self.puntos = 0
+
+        self.vida
+        self.poder_atq
+        self.defensa
+        self.defensa_e
+
 
     def atacar(self, enemigo, tipo_atq):
 
