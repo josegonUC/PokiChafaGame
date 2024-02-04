@@ -37,7 +37,7 @@ class Pokimon:
 
     def atacar(self, enemigo, tipo_atq, tipo):
 
-        Efect = rd.choice[0, 0.25, 0.5, 1, 2, 4]
+        Efect = rd.choice([0, 0.25, 0.5, 1, 2, 4])
         Var = rd.randint(85,100)
 
         bonus = 1
@@ -130,7 +130,7 @@ def menu_selec():
     else:
         print("\nEste Pokimon Aún no existe\n")
 
-    bot = rd.choice()
+    bot = rd.choice(["Pikapija","Chámame","Propulsor","Skirtgirl"])
 
 #MENU PRINCIPAL
 def main_menu():
