@@ -29,13 +29,13 @@ class Pokimon:
             self.nivel = nivel_siguiente
             self.puntos = 0
 
-        self.vida
-        self.poder_atq
-        self.defensa
-        self.defensa_e
+        self.vida = self.vida + 15
+        self.poder_atq = self.poder_atq + 10
+        self.defensa = self.defensa + 5
+        self.defensa_e = self.defensa_e + 4
 
 
-    def atacar(self, enemigo, tipo_atq):
+    def atacar(self, enemigo, tipo_atq, tipo):
 
         Efect = rd.choice[0, 0.25, 0.5, 1, 2, 4]
         Var = rd.randint(85,100)
@@ -45,9 +45,9 @@ class Pokimon:
             bonus = 1.5
             break
 
-        if  self.tipo_atq == "especial":
+        if  self.tipo_atq == tipo:
             Defe = enemigo.defensa_e
-        elif self.tipo_atq == "fisico":
+        elif self.tipo_atq == tipo:
             Defe = enemigo.defensa
 
         danio = 0.01 * bonus * Efect * Var * (((0.2 * enemigo.nivel+1) * 
@@ -60,9 +60,49 @@ class Pokimon:
 
 #Clase Pikapija
 class Pikapija(Pokimon):
-    d
+    def __init__(self, nombre, poder_atq, defensa, defensa_e, nivel, tipo_atq, atq_e, tipo, puntos):
+        super.__init__(nombre, poder_atq, defensa, defensa_e, nivel, tipo_atq, atq_e, tipo, puntos)
+        self.tipo = 'Electrico'
+        ataque = "Impackktruenos"
+        ataque == self.tipo
 
+def mostrar_estado(Pokimon):
+    print(f"{Pokimon.nombre}")
+    print(f"{Pokimon.poder_atq}")
+    print(f"{Pokimon.defensa}")
+    print(f"{Pokimon.defensa_e}")
+    print(f"{Pokimon.tipo}")
+    print(f"{Pokimon.nivel}")
+    print(f"{Pokimon.puntos}")
+    print(f"{Pokimon.vida}")
 
+def turno(jugador,enemigo):
+    #EL JUGADOR ELIGE SU ACCION
+    while jugador.turno == 1:
+
+        print("-------------------")
+        mostrar_estado(jugador)
+        print("-------------------")
+
+        print("\n")
+        accion = int(input("Realiza un movimiento (1-4): "))
+        print("\n")
+
+        if accion == 1:
+            pass
+        elif accion == 2:
+            pass
+        elif accion == 3:
+            pass
+        elif accion == 4:
+            pass
+        else:
+            print("Accion no valida")
+
+    print("\n")
+    print("-------------------")
+    mostrar_estado(enemigo)
+    print("-------------------")
 
 
 #MENU DE ELECCION
@@ -113,6 +153,19 @@ def main_menu():
         elif esc != escape:
             menu_selec()
 
+def inicioJuego(jugador,enemigo,turno):
+    while True:
+
+        turno(jugador,enemigo)
+
+        if jugador.vida <= 0:
+            print(enemigo.nombre," ha ganado\n")
+            break
+        elif enemigo.vida <= 0:
+            print(jugador.nombre," ha ganado\n")
+            break
+        else:
+            print("\nHa habido un Empate\n")
 
 if __name__ == "__main__":
     main_menu()
